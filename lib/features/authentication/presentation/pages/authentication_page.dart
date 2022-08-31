@@ -16,7 +16,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         children: [
           ElevatedButton(
               onPressed: () {
-                Modular.to.pushNamed('/timer/');
+                Modular.to.pushNamed('/training/');
               },
               child: Text("Got To registration"))
         ],

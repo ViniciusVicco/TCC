@@ -1,4 +1,4 @@
-import 'package:tcc/features/timer/domain/entities/training.dart';
+import 'package:tcc/features/training/domain/entities/training.dart';
 
 import '../../data/models/events/training_event.dart';
 

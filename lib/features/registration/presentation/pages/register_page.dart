@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
         children: [
           ElevatedButton(
               onPressed: () {
-                Modular.to.pushNamed('/timer/');
+                Modular.to.pushNamed('/training/');
               },
               child: Text("Go To Timer"))
         ],

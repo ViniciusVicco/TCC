@@ -15,7 +15,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   // ignore: must_call_super
   void initState() {
-    Modular.to.pushNamed("/timer");
+    Modular.to.pushNamed("/training");
   }
 
   @override
