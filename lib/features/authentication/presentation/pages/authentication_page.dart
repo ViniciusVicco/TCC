@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lottie/lottie.dart';
+import 'package:tcc/features/authentication/presentation/cubit/authentication_cubit.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({Key? key}) : super(key: key);
@@ -9,18 +11,18 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
+  @override
+  void initState() {
+    Modular.get<AuthenticationCubit>().init();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Authetication")),
-      body: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                Modular.to.pushNamed('/training/');
-              },
-              child: Text("Got To registration"))
-        ],
-      ),
+      body: Center(
+          child: LottieBuilder.asset(
+              "assets/lotties/landing_page_animation.json")),
     );
   }
 }
