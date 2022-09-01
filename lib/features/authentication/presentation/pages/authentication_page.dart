@@ -20,9 +20,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: LottieBuilder.asset(
-              "assets/lotties/landing_page_animation.json")),
+      body: Center(child: Text("Auth")),
     );
   }
 }

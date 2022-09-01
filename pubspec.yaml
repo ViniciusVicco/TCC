@@ -37,7 +37,9 @@ dependencies:
   bloc: ^8.1.0
   flutter_bloc: ^8.0.1
   flutter_modular: ^5.0.3
+  firebase_auth: ^3.7.0
   equatable: ^2.0.3
+  firebase_core: ^1.21.1
   lottie: ^1.4.1
 
 dev_dependencies:
