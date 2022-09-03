@@ -13,9 +13,9 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   @override
-  // ignore: must_call_super
   void initState() {
-    Modular.to.pushNamed("/training");
+    Modular.to.pushNamed("/");
+    super.initState();
   }
 
   @override

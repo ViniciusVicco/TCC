@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tcc/config/firebase_config.dart';
-import 'package:tcc/features/authentication/presentation/cubit/authentication_cubit.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({Key? key}) : super(key: key);
@@ -14,10 +12,7 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage> {
   @override
   void initState() {
-    Modular.get<AuthenticationCubit>().init();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Modular.get<FirebaseConfig>().initFirebase();
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) async {});
     Future.delayed(Duration(seconds: 2)).then((value) {
       Modular.to.pushReplacementNamed(
         "/authpage",

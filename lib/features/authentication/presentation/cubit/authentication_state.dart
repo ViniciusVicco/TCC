@@ -7,4 +7,12 @@ abstract class AuthenticationState extends Equatable {
   List<Object> get props => [];
 }
 
-class AuthenticationInitial extends AuthenticationState {}
+class AuthenticationInitial extends AuthenticationState {
+  final bool showPassWord;
+  AuthenticationInitial({this.showPassWord = false});
+}
+
+class AuthenticationInProgressState extends AuthenticationState {
+  final String customMessage;
+  AuthenticationInProgressState({this.customMessage = "Autenticando..."});
+}
