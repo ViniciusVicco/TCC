@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:tcc/features/registration/presentation/cubit/registration_cubit.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -9,18 +11,29 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final cubit = Modular.get<RegistrationCubit>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Register")),
-      body: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                Modular.to.pushNamed('/training/');
-              },
-              child: Text("Go To Timer"))
-        ],
+      body: BlocBuilder<RegistrationCubit, RegistrationState>(
+        bloc: cubit,
+        builder: (context, state) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {},
+                  child: const Text("Cadastrar"),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }

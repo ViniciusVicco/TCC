@@ -127,7 +127,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                                     )))),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.fromLTRB(8, 5, 8, 2),
                         child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
@@ -138,6 +138,20 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                               },
                               child: const Text("Login"),
                               style: ButtonStyle(),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 8, 5),
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                await cubit.navigateToRegistrerModule();
+                              },
+                              child: const Text("Cadastrar"),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.blue)),
                             )),
                       )
                     ],
