@@ -177,6 +177,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  get_it:
+    dependency: transitive
+    description:
+      name: get_it
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.2.0"
   http_parser:
     dependency: transitive
     description:
@@ -294,6 +301,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smilink_flutter_core:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "4f2ed5eb09d289c22b86a6a7a8eec38cfc0f58f9"
+      url: "https://dev.azure.com/stgcs-br02-innopex/Smilink/_git/Smilink-App-Core"
+    source: git
+    version: "0.0.1"
   source_span:
     dependency: transitive
     description:

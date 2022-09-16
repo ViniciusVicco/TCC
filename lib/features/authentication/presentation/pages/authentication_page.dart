@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tcc/features/authentication/presentation/cubit/authentication_cubit.dart';
+import 'package:tcc/common/widget/custom_email_form_field_widget.dart';
+
+import '../../../../common/widget/custom_password_form_field_widget.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final cubit = Modular.get<AuthenticationCubit>();
   late TextEditingController emailTextController;
   late TextEditingController passwordTextController;
@@ -81,8 +84,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                                     width: MediaQuery.of(context).size.width,
                                     child: ElevatedButton(
                                       onPressed: () async {},
+                                      style: const ButtonStyle(),
                                       child: const Text("Login"),
-                                      style: ButtonStyle(),
                                     )),
                               )
                             ],
@@ -91,70 +94,61 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                       ],
                     );
                   }
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12)),
-                            child: TextFormField(
-                                controller: emailTextController,
-                                decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    prefixIcon: Icon(Icons.email)))),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12)),
-                            child: TextFormField(
-                                controller: passwordTextController,
-                                obscureText: hidePassword,
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    prefixIcon: const Icon(Icons.lock),
-                                    suffixIcon: IconButton(
-                                      icon: Icon(hidePassword
-                                          ? Icons.visibility
-                                          : Icons.visibility_off),
-                                      onPressed: () {
-                                        changePasswordVisibility();
-                                      },
-                                    )))),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 5, 8, 2),
-                        child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                await cubit.login(
-                                    email: emailTextController.text,
-                                    password: passwordTextController.text);
-                              },
-                              child: const Text("Login"),
-                              style: ButtonStyle(),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 8, 5),
-                        child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                await cubit.navigateToRegistrerModule();
-                              },
-                              child: const Text("Cadastrar"),
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.blue)),
-                            )),
-                      )
-                    ],
+                  return Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: CustomEmailFormFieldWidget(
+                                  textEditingController: emailTextController)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: CustomPasswordFormFieldWidget(
+                                textEditingController: passwordTextController,
+                              )),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 5, 8, 2),
+                          child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    await cubit.login(
+                                        email: emailTextController.text,
+                                        password: passwordTextController.text);
+                                  }
+                                },
+                                child: const Text("Login"),
+                                style: ButtonStyle(),
+                              )),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 5),
+                          child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  await cubit.navigateToRegistrerModule();
+                                },
+                                child: const Text("Cadastrar"),
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.blue)),
+                              )),
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
