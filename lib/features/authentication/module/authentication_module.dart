@@ -9,10 +9,12 @@ import 'package:tcc/features/authentication/presentation/pages/authentication_pa
 import 'package:tcc/features/authentication/presentation/pages/initial_page.dart';
 
 class AuthenticationModule extends Module {
+  final FirebaseAuth firebaseAuth;
+  AuthenticationModule({required this.firebaseAuth});
   @override
   List<Bind> get binds => [
-        Bind.singleton((i) =>
-            AuthenticationDataSourceImpl(firebaseAuth: FirebaseAuth.instance)),
+        Bind.singleton(
+            (i) => AuthenticationDataSourceImpl(firebaseAuth: firebaseAuth)),
         Bind.singleton((i) => AuthenticationRepositoryImpl(
             authenticationDataSourceAbstract:
                 Modular.get<AuthenticationDataSourceImpl>())),

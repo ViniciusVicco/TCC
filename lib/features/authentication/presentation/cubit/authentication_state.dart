@@ -9,10 +9,10 @@ abstract class AuthenticationState extends Equatable {
 
 class AuthenticationInitial extends AuthenticationState {
   final bool showPassWord;
-  AuthenticationInitial({this.showPassWord = false});
+  const AuthenticationInitial({this.showPassWord = false});
 }
 
 class AuthenticationInProgressState extends AuthenticationState {
   final String customMessage;
-  AuthenticationInProgressState({this.customMessage = "Autenticando..."});
+  const AuthenticationInProgressState({this.customMessage = "Autenticando..."});
 }

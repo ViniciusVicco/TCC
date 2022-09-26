@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:tcc/core/datasource/datasource_response.dart';
 
-import '../../domain/datasources/authentication_datasource_abstract.dart';
+import 'authentication_datasource_abstract.dart';
 
 class AuthenticationDataSourceImpl implements AuthenticationDataSourceAbstract {
   final FirebaseAuth firebaseAuth;

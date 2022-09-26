@@ -98,24 +98,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: CustomEmailFormFieldWidget(
-                                  textEditingController: emailTextController)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: CustomPasswordFormFieldWidget(
-                                textEditingController: passwordTextController,
-                              )),
+                        CustomEmailFormFieldWidget(
+                            textEditingController: emailTextController),
+                        CustomPasswordFormFieldWidget(
+                          textEditingController: passwordTextController,
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(8, 5, 8, 2),
@@ -129,8 +115,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                                         password: passwordTextController.text);
                                   }
                                 },
+                                style: const ButtonStyle(),
                                 child: const Text("Login"),
-                                style: ButtonStyle(),
                               )),
                         ),
                         Padding(

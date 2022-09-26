@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:dartz/dartz.dart';
-import 'package:tcc/features/authentication/domain/datasources/authentication_datasource_abstract.dart';
+import 'package:tcc/features/authentication/data/datasources/authentication_datasource_abstract.dart';
 import 'package:tcc/features/authentication/domain/repositories/authentication_repository_abstract.dart';
 
 import '../../domain/failures/login_with_email_and_password_failure.dart';

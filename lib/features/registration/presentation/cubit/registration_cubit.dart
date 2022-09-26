@@ -5,4 +5,6 @@ part 'registration_state.dart';
 
 class RegistrationCubit extends Cubit<RegistrationState> {
   RegistrationCubit() : super(RegistrationInitial());
+
+  Future<void> accountRegistration() async {}
 }
