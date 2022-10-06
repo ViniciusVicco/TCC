@@ -17,21 +17,21 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   void init() {}
 
   Future<void> login({required String email, required String password}) async {
-    emit(AuthenticationInProgressState());
+    emit(const AuthenticationInProgressState());
     final loginResponse = await loginWithEmailAndPasswordUseCase
         .loginWithEmailAndPassword(email: email, password: password);
     await Future.delayed(const Duration(seconds: 2));
     loginResponse.fold((failure) {}, (userCredentials) {
-      navigateToRegistrerModule();
+      navigateToTrainingModule();
       //Metodo de armazenar sessão
       //Metodo de redirecionar usuário
       //Método para checar primeiro acesso.
     });
-    emit(AuthenticationInitial());
+    emit(const AuthenticationInitial());
   }
 
   Future<void> navigateToRegistrerModule() async {
-    await Modular.to.pushNamed("/registration");
+    await Modular.to.pushNamed("/registration/");
   }
 
   void navigateToTrainingModule() {

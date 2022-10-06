@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:tcc/config/firebase/firebase_instances.dart';
 import 'package:tcc/features/authentication/data/datasources/authentication_datasource_impl.dart';
 import 'package:tcc/features/authentication/data/repositories/authentication_repository_impl.dart';
 import 'package:tcc/features/authentication/domain/usecases/login_with_email_and_password_use_case.dart';
@@ -9,16 +9,16 @@ import 'package:tcc/features/authentication/presentation/pages/authentication_pa
 import 'package:tcc/features/authentication/presentation/pages/initial_page.dart';
 
 class AuthenticationModule extends Module {
-  final FirebaseAuth firebaseAuth;
-  AuthenticationModule({required this.firebaseAuth});
+  AuthenticationModule();
   @override
   List<Bind> get binds => [
-        Bind.singleton(
-            (i) => AuthenticationDataSourceImpl(firebaseAuth: firebaseAuth)),
-        Bind.singleton((i) => AuthenticationRepositoryImpl(
+        Bind.factory((i) => AuthenticationDataSourceImpl(
+            firebaseAuth:
+                Modular.get<FirebaseInstances>().getFirebaseAuthInstance)),
+        Bind.factory((i) => AuthenticationRepositoryImpl(
             authenticationDataSourceAbstract:
                 Modular.get<AuthenticationDataSourceImpl>())),
-        Bind.singleton((i) => LoginWithEmailAndPasswordUseCase(
+        Bind.factory((i) => LoginWithEmailAndPasswordUseCase(
             authenticationRepositoryAbstract:
                 Modular.get<AuthenticationRepositoryImpl>())),
         Bind.singleton((i) => AuthenticationCubit(
