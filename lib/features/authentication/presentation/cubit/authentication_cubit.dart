@@ -8,7 +8,7 @@ part 'authentication_state.dart';
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final LoginWithEmailAndPasswordUseCase loginWithEmailAndPasswordUseCase;
   AuthenticationCubit({required this.loginWithEmailAndPasswordUseCase})
-      : super(AuthenticationInitial());
+      : super(const AuthenticationInitial());
 
   late bool showPassWord;
   late bool enablePassWordField;

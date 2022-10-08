@@ -19,7 +19,7 @@ class AuthenticationModule extends Module {
             authenticationDataSourceAbstract:
                 Modular.get<AuthenticationDataSourceImpl>())),
         Bind.factory((i) => LoginWithEmailAndPasswordUseCase(
-            authenticationRepositoryAbstract:
+            repository:
                 Modular.get<AuthenticationRepositoryImpl>())),
         Bind.singleton((i) => AuthenticationCubit(
             loginWithEmailAndPasswordUseCase:

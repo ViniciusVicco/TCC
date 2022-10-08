@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/failure/abstract_failure.dart';
 
-abstract class RegisterRepositoryAbstract {
-  Future<Either<Failure, AuthCredential>> signInWithEmailAndPassword(
+abstract class RegistrationRepositoryAbstract {
+  Future<Either<Failure, AuthCredential>> createAccountWithEmailAndPassword(
       {required String email, required String password});
 }

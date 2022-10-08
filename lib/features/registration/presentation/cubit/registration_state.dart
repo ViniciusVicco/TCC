@@ -8,3 +8,12 @@ abstract class RegistrationState extends Equatable {
 }
 
 class RegistrationInitial extends RegistrationState {}
+
+class RegistrationInProgressState extends RegistrationState {}
+
+class RegistrationSuccessState extends RegistrationState {}
+
+class RegistrationFailureState extends RegistrationState {
+  const RegistrationFailureState({required this.message});
+  final String message;
+}

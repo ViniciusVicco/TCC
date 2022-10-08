@@ -127,10 +127,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                                 onPressed: () async {
                                   await cubit.navigateToRegistrerModule();
                                 },
-                                child: const Text("Cadastrar"),
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all(Colors.blue)),
+                                child: const Text("Cadastrar"),
                               )),
                         )
                       ],
