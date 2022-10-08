@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lottie/lottie.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const LandingPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<LandingPage> createState() => _LandingPageState();
@@ -12,10 +13,18 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   @override
+  void initState() {
+    Modular.to.pushNamed("/");
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
-        child: Lottie.asset(""),
+        alignment: Alignment.center,
+        child: Lottie.asset("assets/lotties/landing_page_animation.json"),
       ),
     );
   }

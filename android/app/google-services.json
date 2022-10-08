@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "14627663713",
+    "project_id": "cleanarch-76068",
+    "storage_bucket": "cleanarch-76068.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14627663713:android:d5dafbd44974bde4535f20",
+        "android_client_info": {
+          "package_name": "com.tcc.vicco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14627663713-lnl8e89h48jog5c5srcofnlbh1nga304.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6nmJtuD5g2AtBARUm_TePeH4IwGPrfLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14627663713-lnl8e89h48jog5c5srcofnlbh1nga304.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
