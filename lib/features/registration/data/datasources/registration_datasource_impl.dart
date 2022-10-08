@@ -13,10 +13,7 @@ class RegistrationDataSourceImpl implements RegistrationDataSourceAbstract {
     if (await InternetConnectionChecker().hasConnection) {
       final response = await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return DataSourceResponse(
-          data: response.credential,
-          success: response.credential is UserCredential);
-      //Ajustar retorno do user...
+      return DataSourceResponse(data: response, success: response.user != null);
     } else {
       return DataSourceResponse(data: null, success: false);
     }

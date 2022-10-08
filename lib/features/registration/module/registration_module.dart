@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcc/config/firebase/firebase_instances.dart';
+import 'package:tcc/core/session/session_manager.dart';
 import 'package:tcc/features/registration/data/datasources/registration_datasource_impl.dart';
 import 'package:tcc/features/registration/domain/repositories/registration_repository_impl.dart';
 import 'package:tcc/features/registration/domain/usecases/registration_use_case.dart';
@@ -21,6 +22,7 @@ class RegistrationModule extends Module {
         Bind.factory((i) => RegistrationUseCase(
             repository: Modular.get<RegistrationRepositoryImpl>())),
         Bind.singleton((i) => RegistrationCubit(
+            sessionManager: SessionManager(),
             registrationUseCase: Modular.get<RegistrationUseCase>()))
       ];
 

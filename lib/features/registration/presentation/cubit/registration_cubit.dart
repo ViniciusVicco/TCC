@@ -3,11 +3,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc/features/registration/domain/usecases/registration_use_case.dart';
 
+import '../../../../core/session/session_manager.dart';
+
 part 'registration_state.dart';
 
 class RegistrationCubit extends Cubit<RegistrationState> {
+  final SessionManager sessionManager;
   final RegistrationUseCase registrationUseCase;
-  RegistrationCubit({required this.registrationUseCase})
+  RegistrationCubit(
+      {required this.sessionManager, required this.registrationUseCase})
       : super(RegistrationInitial());
 
   Future<void> accountRegistration(BuildContext context,

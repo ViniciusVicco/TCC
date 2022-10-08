@@ -12,7 +12,7 @@ class RegistrationRepositoryImpl implements RegistrationRepositoryAbstract {
   final RegistrationDataSourceAbstract registrationDataSourceAbstract;
   RegistrationRepositoryImpl({required this.registrationDataSourceAbstract});
   @override
-  Future<Either<Failure, AuthCredential>> createAccountWithEmailAndPassword(
+  Future<Either<Failure, UserCredential>> createAccountWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       final response = await registrationDataSourceAbstract

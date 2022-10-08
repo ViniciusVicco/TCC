@@ -5,14 +5,14 @@ import 'package:tcc/features/authentication/domain/failures/login_with_email_and
 import 'package:tcc/features/authentication/domain/repositories/authentication_repository_abstract.dart';
 
 class LoginWithEmailAndPasswordUseCase implements UseCase {
-  final AuthenTicationRepositoryAbstract repository;
+  final AuthenTicationRepositoryAbstract authenticationRepositoryAbstract;
   LoginWithEmailAndPasswordUseCase(
-      {required this.repository});
+      {required this.authenticationRepositoryAbstract});
 
   Future<Either<LoginWithEmailAndPasswordFailure, UserCredential>>
       loginWithEmailAndPassword(
           {required String email, required String password}) {
-    return repository.loginWithEmailAndPassword(
+    return authenticationRepositoryAbstract.loginWithEmailAndPassword(
         email: email, password: password);
   }
 }
