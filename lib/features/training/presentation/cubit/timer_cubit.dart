@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tcc/core/session/session_manager.dart';
 
 import '../../data/models/events/end_event.dart';
 import '../../data/models/events/start_event.dart';
@@ -10,8 +11,9 @@ import '../../domain/entities/training.dart';
 part 'timer_state.dart';
 
 class TrainingCubit extends Cubit<TrainingState> {
+  final SessionManager sessionManager;
   List<Training> trainingTimers = [];
-  TrainingCubit() : super(TrainingInitialState());
+  TrainingCubit({required this.sessionManager}) : super(TrainingInitialState());
 
   bool isCounting = false;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widget/custom_email_form_field_widget.dart';
-import '../../../../../common/widget/custom_password_form_field_widget.dart';
+import '../../../../../common/textfields/widgets/custom_email_form_field_widget.dart';
+import '../../../../../common/textfields/widgets/custom_password_form_field_widget.dart';
 
 class RegistrationMainContentWidget extends StatelessWidget {
   final TextEditingController confirmTextEditingController;

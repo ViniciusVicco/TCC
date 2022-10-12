@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hive/hive.dart';
 import 'package:tcc/core/session/user_auth_entity.dart';
 
@@ -23,6 +25,14 @@ class SessionManager {
       }
     } catch (error) {
       return null;
+    }
+  }
+
+  Future<void> cleanSession() async {
+    try {
+      await Hive.deleteFromDisk();
+    } catch (error) {
+      log("SessionManager: $error");
     }
   }
 }

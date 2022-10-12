@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tcc/common/widget/custom_email_form_field_widget.dart';
+import 'package:tcc/common/textfields/widgets/custom_email_form_field_widget.dart';
 import 'package:tcc/features/registration/presentation/cubit/registration_cubit.dart';
 import 'package:tcc/features/registration/presentation/pages/widgets/registration_main_content_widget.dart';
 
-import '../../../../common/widget/custom_password_form_field_widget.dart';
+import '../../../../common/textfields/widgets/custom_password_form_field_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

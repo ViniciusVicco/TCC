@@ -22,7 +22,7 @@ class RegistrationModule extends Module {
         Bind.factory((i) => RegistrationUseCase(
             repository: Modular.get<RegistrationRepositoryImpl>())),
         Bind.singleton((i) => RegistrationCubit(
-            sessionManager: SessionManager(),
+            sessionManager: Modular.get<SessionManager>(),
             registrationUseCase: Modular.get<RegistrationUseCase>()))
       ];
 

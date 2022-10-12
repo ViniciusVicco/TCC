@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:tcc/common/drawer/custom_drawer_widget.dart';
 
+import '../../../../core/session/session_manager.dart';
 import '../../data/models/events/end_event.dart';
 import '../../data/models/events/start_event.dart';
 import '../../data/models/events/training_event.dart';
 import '../../domain/entities/training_event.dart';
 import '../cubit/timer_cubit.dart';
 
-class TimerPage extends StatefulWidget {
-  const TimerPage({Key? key}) : super(key: key);
+class TrainingMainPage extends StatefulWidget {
+  const TrainingMainPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<TimerPage> createState() => _TimerPageState();
+  State<TrainingMainPage> createState() => _TrainingMainPageState();
 }
 
-class _TimerPageState extends State<TimerPage> {
+class _TrainingMainPageState extends State<TrainingMainPage> {
   final cubit = Modular.get<TrainingCubit>();
   @override
   void initState() {
@@ -26,7 +30,8 @@ class _TimerPageState extends State<TimerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Iniciar Treino")),
+        drawer: CustomDrawerWidget(sessionManager: cubit.sessionManager),
+        appBar: AppBar(title: const Text("Meus Treinos")),
         body: BlocBuilder<TrainingCubit, TrainingState>(
           bloc: Modular.get<TrainingCubit>(),
           builder: (context, state) {

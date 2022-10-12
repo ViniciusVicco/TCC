@@ -23,7 +23,7 @@ class AuthenticationModule extends Module {
             authenticationRepositoryAbstract:
                 Modular.get<AuthenticationRepositoryImpl>())),
         Bind.singleton((i) => AuthenticationCubit(
-            sessionManager: SessionManager(),
+            sessionManager: Modular.get<SessionManager>(),
             loginWithEmailAndPasswordUseCase:
                 Modular.get<LoginWithEmailAndPasswordUseCase>()))
       ];
