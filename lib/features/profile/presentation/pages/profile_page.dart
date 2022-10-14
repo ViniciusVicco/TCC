@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tcc/common/drawer/custom_drawer_widget.dart';
+import 'package:tcc/common/presentation/drawer/custom_drawer_widget.dart';
 import 'package:tcc/features/profile/presentation/cubit/profile_cubit.dart';
 
-import '../../../../common/drawer/widgets/avatar_widget.dart';
+import '../../../../common/presentation/drawer/widgets/avatar_widget.dart';
 import '../../../../core/session/session_manager.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -20,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     cubit = Modular.get<ProfileCubit>();
+    //FetchImage on init
   }
 
   @override
@@ -31,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Expanded(
             child: ListView(
-              children: [AvatarWidget(imageUrl: "", canEdit: true)],
+              children: [AvatarWidget(imageUrl: "", onTap: () {})],
             ),
           ),
           Padding(

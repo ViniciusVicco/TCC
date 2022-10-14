@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tcc/common/drawer/widgets/avatar_widget.dart';
-import 'package:tcc/common/drawer/widgets/drawer_menu_item.dart';
+import 'package:tcc/common/presentation/drawer/widgets/avatar_widget.dart';
+import 'package:tcc/common/presentation/drawer/widgets/drawer_menu_item.dart';
 import 'package:tcc/core/session/session_manager.dart';
 
 class CustomDrawerWidget extends StatefulWidget {
@@ -25,7 +25,8 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
           Expanded(
             child: ListView(
               children: [
-                const AvatarWidget(
+                AvatarWidget(
+                  onTap: () {},
                   imageUrl:
                       "https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg",
                 ),

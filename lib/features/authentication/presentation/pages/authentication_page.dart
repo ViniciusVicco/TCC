@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tcc/features/authentication/presentation/cubit/authentication_cubit.dart';
-import 'package:tcc/common/textfields/widgets/custom_email_form_field_widget.dart';
+import 'package:tcc/common/presentation/textfields/widgets/custom_email_form_field_widget.dart';
 
-import '../../../../common/textfields/widgets/custom_password_form_field_widget.dart';
+import '../../../../common/presentation/textfields/widgets/custom_password_form_field_widget.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tcc/common/drawer/custom_drawer_widget.dart';
+import 'package:tcc/common/presentation/drawer/custom_drawer_widget.dart';
 
 import '../../../../core/session/session_manager.dart';
 import '../../data/models/events/end_event.dart';
