@@ -8,5 +8,6 @@ abstract class ProfileDataSourceAbstract {
       {required File file,
       required String userUID,
       required FileCategory fileCategory});
-  Future<DataSourceResponse> getFileUrl();
+  Future<DataSourceResponse> getFileUrl(
+      {required String userUID, required FileCategory fileCategory});
 }

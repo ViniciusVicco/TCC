@@ -9,4 +9,7 @@ abstract class ProfileRepositoryAbstract {
       {required File file,
       required String userUID,
       required FileCategory fileCategory});
+
+  Future<Either<Failure, String>> getFileUrl(
+      {required String userUID, required FileCategory fileCategory});
 }

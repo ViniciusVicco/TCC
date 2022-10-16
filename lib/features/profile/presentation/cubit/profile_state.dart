@@ -7,4 +7,11 @@ abstract class ProfileState extends Equatable {
   List<Object> get props => [];
 }
 
-class ProfileInitialState extends ProfileState {}
+class ProfileInitialState extends ProfileState {
+  final String profileUrlImage;
+  const ProfileInitialState({this.profileUrlImage = ""});
+}
+
+class ProfileLoadingState extends ProfileState {
+  const ProfileLoadingState();
+}

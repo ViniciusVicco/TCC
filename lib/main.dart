@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcc/config/hive/hive_config.dart';
@@ -15,12 +15,12 @@ Future<void> main() async {
   HiveConfig().initHive();
   FirebaseAuth firebaseAuthInstance = FirebaseAuth.instance;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  FirebaseDatabase firebaseDatabase = FirebaseDatabase.instance;
+  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
   return runApp(ModularApp(
       module: AppModule(
           firebaseAuth: firebaseAuthInstance,
           firebaseFirestore: firebaseFirestore,
-          firebaseDatabase: firebaseDatabase),
+          firebaseStorage: firebaseStorage),
       child: const MainWidget()));
 }

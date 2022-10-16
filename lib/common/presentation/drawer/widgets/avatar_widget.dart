@@ -14,18 +14,8 @@ class AvatarWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 15),
           child: CircleAvatar(
             radius: 60,
-            child: Image.network(
-              imageUrl,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress != null) {
-                  if (loadingProgress.cumulativeBytesLoaded !=
-                      loadingProgress.cumulativeBytesLoaded) {
-                    return const CircularProgressIndicator();
-                  }
-                }
-                return child;
-              },
-            ),
+            backgroundImage: NetworkImage(imageUrl),
+            backgroundColor: Colors.transparent,
           ),
         ),
       );
