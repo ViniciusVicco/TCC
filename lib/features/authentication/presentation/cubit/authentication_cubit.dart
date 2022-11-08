@@ -36,8 +36,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> login(BuildContext context,
       {required String email, required String password}) async {
     emit(const AuthenticationInProgressState());
-    final loginResponse = await loginWithEmailAndPasswordUseCase
-        .loginWithEmailAndPassword(email: email, password: password);
+    final loginResponse = await loginWithEmailAndPasswordUseCase.login(
+        email: email, password: password);
     await Future.delayed(const Duration(seconds: 2));
     await loginResponse.fold((failure) {
       ScaffoldMessenger.of(context)

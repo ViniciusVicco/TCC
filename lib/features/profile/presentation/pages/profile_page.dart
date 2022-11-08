@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -24,7 +25,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     cubit = Modular.get<ProfileCubit>();
     cubit.getFileUrlProfile();
-    //FetchImage on init
   }
 
   @override
@@ -35,7 +35,31 @@ class _ProfilePageState extends State<ProfilePage> {
       body: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           if (state is ProfileLoadingState) {
-            return CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is ProfileProgressPictureState) {
+            return Center(
+              child: Text("Transferindo: ${state.progress.toString()}"),
+            );
+          }
+          if (state is ProfileSendingPictureState) {
+            return StreamBuilder<TaskSnapshot>(
+                stream: cubit.uploadTaskStream,
+                builder: (context, snapshot) {
+                  if (snapshot.data == null) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return const Center(
+                      child: Text("Ocorreu um erro ao processar este envio"),
+                    );
+                  }
+                  return Container(
+                      child: Text(
+                          " Transferindo ${(snapshot.data!.bytesTransferred / snapshot.data!.totalBytes).toString()}"));
+                });
           }
           if (state is ProfileInitialState) {
             return Column(
@@ -57,8 +81,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                         final fileFromCamera =
                                             await cubit.fetchImageFromCamera();
                                         if (fileFromCamera != null) {
-                                          await cubit
-                                              .uploadFile(fileFromCamera);
+                                          Navigator.of(context).pop();
+                                          cubit.initProfileSendStream(
+                                              fileFromCamera);
                                         }
                                       }),
                                   DialogAction(
@@ -67,8 +92,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                         final fileFromGallery =
                                             await cubit.fetchImageFromGallery();
                                         if (fileFromGallery != null) {
-                                          await cubit
-                                              .uploadFile(fileFromGallery);
+                                          Navigator.of(context).pop();
+                                          cubit.initProfileSendStream(
+                                              fileFromGallery);
                                         }
                                       }),
                                   DialogAction(

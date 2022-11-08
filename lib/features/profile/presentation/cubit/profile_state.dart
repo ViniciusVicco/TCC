@@ -15,3 +15,13 @@ class ProfileInitialState extends ProfileState {
 class ProfileLoadingState extends ProfileState {
   const ProfileLoadingState();
 }
+
+class ProfileSendingPictureState extends ProfileState {
+  final File file;
+  const ProfileSendingPictureState({required this.file});
+}
+
+class ProfileProgressPictureState extends ProfileState {
+  final String progress;
+  const ProfileProgressPictureState({required this.progress});
+}

@@ -13,30 +13,14 @@ class ProfileDatasourceImpl implements ProfileDataSourceAbstract {
       {required this.firebaseFirestore, required this.firabaseStorage});
 
   @override
-  Future<DataSourceResponse> uploadFile(
+  Stream<TaskSnapshot> uploadFile(
       {required File file,
       required String userUID,
-      required FileCategory fileCategory}) async {
+      required FileCategory fileCategory}) async* {
     final String path = "$userUID/${fileCategory.getStringPathFromCategory()}";
     final folderRef = firabaseStorage.ref().child(path);
-    final response = await folderRef.putFile(file);
-    switch (response.state) {
-      case TaskState.paused:
-        // TODO: Handle this case.
-        break;
-      case TaskState.running:
-        // TODO: Handle this case.
-        break;
-      case TaskState.success:
-        return DataSourceResponse(data: null, success: true);
-
-      case TaskState.canceled:
-        // TODO: Handle this case.
-        break;
-      case TaskState.error:
-        return DataSourceResponse(data: null, success: false);
-    }
-    return DataSourceResponse(data: null, success: true);
+    final result = folderRef.putFile(file);
+    yield* result.asStream();
   }
 
   @override

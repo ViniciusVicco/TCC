@@ -9,9 +9,8 @@ class LoginWithEmailAndPasswordUseCase implements UseCase {
   LoginWithEmailAndPasswordUseCase(
       {required this.authenticationRepositoryAbstract});
 
-  Future<Either<LoginWithEmailAndPasswordFailure, UserCredential>>
-      loginWithEmailAndPassword(
-          {required String email, required String password}) {
+  Future<Either<LoginWithEmailAndPasswordFailure, UserCredential>> login(
+      {required String email, required String password}) {
     return authenticationRepositoryAbstract.loginWithEmailAndPassword(
         email: email, password: password);
   }

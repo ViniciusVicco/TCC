@@ -8,7 +8,7 @@ import '../../domain/failures/login_with_email_and_password_failure.dart';
 class AuthenticationRepositoryImpl implements AuthenTicationRepositoryAbstract {
   final AuthenticationDataSourceAbstract authenticationDataSourceAbstract;
   AuthenticationRepositoryImpl(
-      {required final this.authenticationDataSourceAbstract});
+      {required this.authenticationDataSourceAbstract});
   @override
   Future<Either<LoginWithEmailAndPasswordFailure, UserCredential>>
       loginWithEmailAndPassword(

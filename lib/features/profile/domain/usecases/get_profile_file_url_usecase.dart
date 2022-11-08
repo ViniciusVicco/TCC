@@ -3,8 +3,10 @@ import 'package:tcc/features/profile/domain/repositories/profile_repository_abst
 
 import '../../../../common/data/models/files/file_category_enum.dart';
 import '../../../../core/failure/abstract_failure.dart';
+import '../../../../core/usecase/use_case.dart';
+import 'package:dcdg/dcdg.dart';
 
-class GetProfileFileUrlUseCase {
+class GetProfileFileUrlUseCase implements UseCase {
   ProfileRepositoryAbstract repository;
   GetProfileFileUrlUseCase({required this.repository});
 
