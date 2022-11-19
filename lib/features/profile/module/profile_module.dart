@@ -41,10 +41,5 @@ class ProfileModule extends Module {
                     sessionManager: Modular.get<SessionManager>(),
                   ),
                 )),
-        // ChildRoute('/authpage',
-        //     child: (context, args) => BlocProvider(
-        //           create: (context) => Modular.get<AuthenticationCubit>(),
-        //           child: const AuthenticationPage(),
-        //         ))
       ];
 }

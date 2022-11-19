@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:dartz/dartz.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:tcc/features/authentication/data/datasources/authentication_datasource_abstract.dart';
 import 'package:tcc/features/authentication/domain/failures/cant_login_by_user_disabled.dart';
 import 'package:tcc/features/authentication/domain/failures/cant_login_not_found_user.dart';
@@ -25,17 +26,26 @@ class AuthenticationRepositoryImpl implements AuthenTicationRepositoryAbstract {
       } else {
         return Left(CantLoginWithEmailAndPasswordFailure());
       }
-    } on FirebaseAuthException catch (error) {
-      if (error.code == "invalid-email" || error.code == "wrong-password") {
+    } on FirebaseAuthException catch (exception, stackTrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
+      if (exception.code == "invalid-email" ||
+          exception.code == "wrong-password") {
         return Left(CantLoginReasonEmailOrPasswordInvalid());
-      } else if (error.code == "user-not-found") {
+      } else if (exception.code == "user-not-found") {
         return Left(CantLoginByNotFoundUser());
-      } else if (error.code == "user-disabled") {
+      } else if (exception.code == "user-disabled") {
         return Left(CantLoginByUserDisabled());
       } else {
         return Left(CantLoginWithEmailAndPasswordFailure());
       }
-    } catch (error) {
+    } catch (exception, stackTrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
       return Left(CantLoginWithEmailAndPasswordFailure());
     }
   }

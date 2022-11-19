@@ -7,8 +7,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tcc/common/data/models/files/file_category_enum.dart';
 import 'package:tcc/core/session/session_manager.dart';
-import 'package:tcc/features/authentication/presentation/pages/initial_page.dart';
-
 import '../../domain/usecases/get_profile_file_url_usecase.dart';
 import '../../domain/usecases/upload_profile_file_usecase.dart';
 
@@ -16,7 +14,6 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   final UploadFileUseCase uploadFileUseCase;
-  //GetUploadedFileFromUserUid
   final SessionManager sessionManager;
   final GetProfileFileUrlUseCase getProfileFileUrlUseCase;
 
