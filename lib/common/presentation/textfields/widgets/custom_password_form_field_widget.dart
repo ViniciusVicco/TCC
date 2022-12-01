@@ -34,6 +34,7 @@ class _CustomPasswordFormFieldWidgetState
               if (value.length < 8) {
                 return "A senha deve conter ao menos 8 caracteres";
               }
+              return null;
             },
             decoration: InputDecoration(
                 hintText: widget.textHint ?? "Senha",

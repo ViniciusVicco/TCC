@@ -29,8 +29,7 @@ class TrainingCubit extends Cubit<TrainingState> {
     yield StartEvent();
     for (Training training in trainingTimers) {
       for (int seconds = training.seconds; seconds >= 0; seconds--) {
-        print(" seconds: $seconds, Training: ${training.name}");
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 1));
         yield (ExerciseEvent(training: training, now: seconds));
       }
     }

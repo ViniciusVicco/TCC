@@ -13,7 +13,7 @@ class _InitialPageState extends State<InitialPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {});
-    Future.delayed(Duration(seconds: 2)).then((value) {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
       Modular.to.pushReplacementNamed(
         "/authpage",
       );

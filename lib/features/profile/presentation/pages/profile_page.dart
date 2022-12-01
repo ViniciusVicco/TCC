@@ -56,9 +56,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Text("Ocorreu um erro ao processar este envio"),
                     );
                   }
-                  return Container(
-                      child: Text(
-                          " Transferindo ${(snapshot.data!.bytesTransferred / snapshot.data!.totalBytes).toString()}"));
+                  return Text(
+                      " Transferindo ${(snapshot.data!.bytesTransferred / snapshot.data!.totalBytes).toString()}");
                 });
           }
           if (state is ProfileInitialState) {
@@ -111,10 +110,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 30),
+                  padding: const EdgeInsets.only(bottom: 30),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("Atualizar meu perfil"),
+                    child: const Text("Atualizar meu perfil"),
                   ),
                 )
               ],

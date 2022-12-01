@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcc/common/presentation/drawer/custom_drawer_widget.dart';
 
-import '../../../../core/session/session_manager.dart';
 import '../../data/models/events/end_event.dart';
 import '../../data/models/events/start_event.dart';
 import '../../data/models/events/training_event.dart';
