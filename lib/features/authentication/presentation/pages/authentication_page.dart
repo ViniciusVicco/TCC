@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tcc/features/authentication/presentation/cubit/authentication_cubit.dart';
-import 'package:tcc/common/widget/custom_email_form_field_widget.dart';
+import 'package:tcc/common/presentation/textfields/widgets/custom_email_form_field_widget.dart';
 
-import '../../../../common/widget/custom_password_form_field_widget.dart';
+import '../../../../common/presentation/textfields/widgets/custom_password_form_field_widget.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({Key? key}) : super(key: key);
@@ -110,7 +110,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                               child: ElevatedButton(
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
-                                    await cubit.login(
+                                    await cubit.login(context,
                                         email: emailTextController.text,
                                         password: passwordTextController.text);
                                   }
@@ -127,10 +127,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                                 onPressed: () async {
                                   await cubit.navigateToRegistrerModule();
                                 },
-                                child: const Text("Cadastrar"),
                                 style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all(Colors.blue)),
+                                child: const Text("Cadastrar"),
                               )),
                         )
                       ],

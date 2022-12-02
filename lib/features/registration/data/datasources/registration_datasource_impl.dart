@@ -8,14 +8,12 @@ class RegistrationDataSourceImpl implements RegistrationDataSourceAbstract {
   RegistrationDataSourceImpl({required this.firebaseAuth});
 
   @override
-  Future<DataSourceResponse> createUserWithEmailAndPassword(
+  Future<DataSourceResponse> createAccountWithEmailAndPassword(
       {required String email, required String password}) async {
     if (await InternetConnectionChecker().hasConnection) {
       final response = await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return DataSourceResponse(
-          data: response.credential,
-          success: response.credential is UserCredential);
+      return DataSourceResponse(data: response, success: response.user != null);
     } else {
       return DataSourceResponse(data: null, success: false);
     }

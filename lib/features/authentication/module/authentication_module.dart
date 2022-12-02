@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tcc/config/firebase/firebase_instances.dart';
+import 'package:tcc/core/session/session_manager.dart';
 import 'package:tcc/features/authentication/data/datasources/authentication_datasource_impl.dart';
 import 'package:tcc/features/authentication/data/repositories/authentication_repository_impl.dart';
 import 'package:tcc/features/authentication/domain/usecases/login_with_email_and_password_use_case.dart';
@@ -22,6 +23,7 @@ class AuthenticationModule extends Module {
             authenticationRepositoryAbstract:
                 Modular.get<AuthenticationRepositoryImpl>())),
         Bind.singleton((i) => AuthenticationCubit(
+            sessionManager: Modular.get<SessionManager>(),
             loginWithEmailAndPasswordUseCase:
                 Modular.get<LoginWithEmailAndPasswordUseCase>()))
       ];
